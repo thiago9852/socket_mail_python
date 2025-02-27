@@ -78,7 +78,7 @@ def menu_email(cliente, username):
         elif opcao == '6':
             break
 
-def main():
+def cliente_iniciar():
     cliente = None
     while True:
         opcao = menu_principal()
@@ -92,5 +92,5 @@ def main():
         else:
             print("Conecte-se ao servidor primeiro.")
 
-if __name__ == "__main__":
-    main()
+
+cliente_iniciar()
