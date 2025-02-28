@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-primary">Enviar E-mail</h2>
+
+    {% if message %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endif %}
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" class="p-4 border rounded shadow-sm bg-light">
+        <div class="mb-3">
+            <label for="destinatario" class="form-label">Destinatário:</label>
+            <input type="text" id="destinatario" name="destinatario" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="assunto" class="form-label">Assunto:</label>
+            <input type="text" id="assunto" name="assunto" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="corpo" class="form-label">Corpo:</label>
+            <textarea id="corpo" name="corpo" class="form-control" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+    </form>
+
+    <a href="{{ url_for('inbox') }}" class="btn btn-outline-secondary mt-3">Voltar para a Caixa de Entrada</a>
+</div>
+{% endblock %}

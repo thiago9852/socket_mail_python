@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Detalhes do E-mail</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>De:</strong> {{ email['remetente'] }}</p>
+            <p><strong>Assunto:</strong> {{ email['assunto'] }}</p>
+            <p><strong>Data:</strong> {{ email['data'] }}</p>
+            <hr>
+            <p class="border rounded p-3 bg-light">{{ email['corpo'] }}</p>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{{ url_for('inbox') }}" class="btn btn-secondary">Voltar para a Caixa de Entrada</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
