@@ -12,6 +12,7 @@
         <header>
             <h1>BSI - webMail</h1>
             <nav>
+                <!-- img src="/static/image/image.png" alt="logo-bsi"> -->
                 {% if 'username' in session %}
                     <a href="{{ url_for('inbox') }}">Caixa de Entrada</a> |
                     <a href="{{ url_for('enviar_email') }}">Enviar E-mail</a> |

@@ -1,5 +1,6 @@
 body {
-    background-image: url(/static/image/backGround.png);
+    /*background-image: url(/static/image/backGround.png);*/
+    background-color: honeydew;
 }
 
 header {
