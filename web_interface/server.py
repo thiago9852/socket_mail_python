@@ -56,6 +56,7 @@ def processar_comando(dados):
     else:
         return json.dumps({"mensagem": "Erro: Comando inválido."})
 
+#cadastra users
 def cadastrar_usuario(nome, username, senha):
     if username in usuarios:
         return "Erro: username já existe."
@@ -68,6 +69,7 @@ def autenticar_usuario(username, senha):
         return json.dumps({"status": "sucesso", "mensagem": "Autenticação bem-sucedida.", "nome": usuarios[username]["nome"]})
     return json.dumps({"status": "erro", "mensagem": "Username ou senha incorretos."})
 
+# envia os emails
 def enviar_email(remetente, destinatario, assunto, corpo):
     if destinatario not in usuarios:
         return {"status": "erro", "mensagem": "Destinatário inexistente."}
@@ -82,6 +84,7 @@ def enviar_email(remetente, destinatario, assunto, corpo):
     }
     return {"status": "sucesso", "mensagem": "E-mail enviado com sucesso."}
 
+# Recebe os emails
 def receber_emails(username):
     recebidos = [email for email in emails.values() if email['destinatario'] == username]
     

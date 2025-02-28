@@ -3,7 +3,7 @@ import socket
 import json
 
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta_aqui'
+
 
 SERVER_IP = '127.0.0.1'
 SERVER_PORT = 8080
@@ -21,11 +21,13 @@ def enviar_comando(cliente, dados):
     cliente.send(json.dumps(dados).encode())
     return json.loads(cliente.recv(1024).decode())
 
+
 @app.route('/')
 def index():
     if 'username' in session:
         return redirect(url_for('inbox'))
     return render_template('index.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -47,6 +49,7 @@ def login():
             return render_template('login.html', error="Erro ao conectar ao servidor.")
     return render_template('login.html')
 
+
 @app.route('/registrar', methods=['GET', 'POST'])
 def registrar():
     if request.method == 'POST':
@@ -63,6 +66,7 @@ def registrar():
         else:
             return render_template('registrar.html', error="Erro ao conectar ao servidor.")
     return render_template('registrar.html')
+
 
 @app.route('/inbox')
 def inbox():
@@ -85,6 +89,7 @@ def inbox():
     else:
         return render_template('inbox.html', error="Erro ao conectar ao servidor.")
 
+
 @app.route('/enviar_email', methods=['GET', 'POST'])
 def enviar_email():
     if 'username' not in session:
@@ -106,6 +111,7 @@ def enviar_email():
             return render_template('enviar_email.html', error="Erro ao conectar ao servidor.")
     return render_template('enviar_email.html')
 
+
 @app.route('/ler_email/<int:email_index>')
 def ler_email(email_index):
     if 'username' not in session or 'emails' not in session:
@@ -119,11 +125,11 @@ def ler_email(email_index):
     else:
         return render_template('inbox.html', error="E-mail não encontrado.")
 
+
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     session.pop('emails', None)
     return redirect(url_for('index'))
 
-if __name__ == '__main__':
-    app.run(debug=True)
+app.run(debug=True)
