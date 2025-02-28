@@ -3,7 +3,7 @@ import socket
 import json
 
 app = Flask(__name__)
-
+app.secret_key = 'sua_chave_secreta_aqui'
 
 SERVER_IP = '127.0.0.1'
 SERVER_PORT = 8080

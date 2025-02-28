@@ -1,5 +1,5 @@
 body {
-    background-color: #f8f9fa;
+    background-image: url(/static/image/backGround.png);
 }
 
 header {
@@ -23,7 +23,8 @@ nav a:hover {
 
 
 main {
-    max-width: 800px;
+    max-width: 1200px;
+    height: 100%;
     margin: 20px auto;
     padding: 20px;
     background: white;
